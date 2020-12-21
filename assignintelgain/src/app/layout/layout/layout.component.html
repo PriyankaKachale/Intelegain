@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top justify-content-between">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <div class="input-group mb-2">
+          
+         <span> Welcome to Intelegain </span>
+      </div>
+    </li>
+  </ul>
+  <ul class="navbar-nav" style="margin-left: 80%;">
+    <li class="nav-item">
+      <div class="input-group mb-2"> 
+        <a class="btn btn-primary" (click)="logout()">Log Out</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="drawer-container">
+  <div class="sidenav">
+    <div class="leftmenu">
+      <div *ngIf="role =='admin'" class="menuitems">
+        <a [routerLink]="['/layout/employee']"  active  [ngClass]="{active: currentActive=='employee'}" (click)="changeActive('employee')">
+          <i class="fa fa-home" aria-hidden="true"></i>
+          <h6>employee</h6>
+        </a>
+      </div>
+
+      <div class="menuitems">
+        <a [routerLink]="['/layout/treeview']" [ngClass]="{active: currentActive=='treeview'}" (click)="changeActive('treeview')">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          <h6>TreeView</h6>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-container">
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+

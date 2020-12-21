@@ -1,0 +1,161 @@
+<div class="p-4">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="white-bg height100 p-3" style="margin-left: 4%;">
+        <div class="row">
+            <div class="headings pl-4 mt-3 mb-3">
+              <h6 style="margin-left: 5%;">Add Employee</h6>
+            </div>
+        </div>
+        <form name="form" #emp="ngForm" novalidate (ngSubmit)="emp.form.valid && addEmployee(emp)">
+          <div class="form-group has-icon">
+            <i class="fa fa-user fa-form-icon" aria-hidden="true"></i>
+            <input type="text" class="form-control" name="first_name" [(ngModel)]="employee.first_name"
+              placeholder=" Employee Name" #first_name="ngModel"
+              [ngClass]="{'is-invalid' : (first_name.invalid && (first_name.dirty || first_name.touched))}" required>
+            <div style="margin-top:-30px" class="help-block"
+              *ngIf="first_name.invalid && (first_name.dirty || first_name.touched || emp.submitted)">
+              <div style="color: red; font-size: 12px" class="help-block" *ngIf="first_name.errors.required"
+                class="form-controll-feedback">
+                Name Required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group has-icon">
+            <i class="fa fa-mobile fa-form-icon" aria-hidden="true"></i>
+              <input type="text" class="form-control" placeholder="Your Mobile Number" name="mobile" [(ngModel)]="employee.mobile_no"
+                #mobile="ngModel" minlength="10" maxlength="10" pattern="^(\(?\+?[0-9]*\)?)?[0-9_\(\)]*$"
+                [ngClass]="{'is-invalid' : (mobile.invalid && (mobile.dirty || mobile.touched))}" required>
+              <div style="margin-top:-30px" class="help-block"
+                *ngIf="mobile.invalid && (mobile.dirty || mobile.touched || emp.submitted)">
+                <div style="color: red; font-size: 12px" class="help-block" *ngIf="mobile.errors.required"
+                  class="form-controll-feedback">
+                  Mobile Number Required
+                </div>
+                <div style="color: red; font-size: 12px" class="help-block"
+                  *ngIf="mobile.errors.minlength||mobile.errors.maxlength" class="help-block">
+                  Mobile No Must Be {{mobile.errors.minlength.requiredLength-mobile.value.length}} Characters Long.
+                </div>
+                <div style="color: red; font-size: 12px" class="help-block" *ngIf="mobile.errors?.pattern" class="help-block">
+                  Invalid Mobile Number </div>
+              </div>
+            </div>
+
+         
+
+          <div class="form-group has-icon">
+
+            <i class="fa fa-envelope fa-form-icon" aria-hidden="true"></i>
+
+            <input type="text" class="form-control" name="email" [(ngModel)]="employee.email" placeholder=" emil id"
+              #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              [ngClass]="{'is-invalid' : (email.invalid && (email.dirty || email.touched))}" required>
+            <div style="margin-top:-30px" class="help-block"
+              *ngIf="email.invalid && (email.dirty || email.touched || emp.submitted)">
+              <div style="color: red; font-size: 12px" class="help-block" *ngIf="email.errors.required"
+                class="form-controll-feedback">
+                Email Id Required
+              </div>
+              <div style="color: red; font-size: 12px" class="help-block" *ngIf="email.errors?.pattern"
+                class="help-block">Invalid Email Address</div>
+            </div>
+          </div>
+
+          <div class="form-group has-icon">
+            <i class="fa fa-user fa-form-icon" aria-hidden="true"></i>
+            <input type="text" class="form-control" name="employeeId" [(ngModel)]="employee.employeeId"
+              placeholder=" Employee Id" #employeeId="ngModel"
+              [ngClass]="{'is-invalid' : (employeeId.invalid && (employeeId.dirty || employeeId.touched))}" required>
+            <div style="margin-top:-30px" class="help-block"
+              *ngIf="employeeId.invalid && (employeeId.dirty || employeeId.touched || emp.submitted)">
+              <div style="color: red; font-size: 12px" class="help-block" *ngIf="employeeId.errors.required"
+                class="form-controll-feedback">
+                Employee Id Required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group has-icon">
+
+            <i class="fa fa-briefcase fa-form-icon" aria-hidden="true"></i>
+
+            <input type="text" class="form-control" name="designation" [(ngModel)]="employee.designation"
+              placeholder=" Designation" #designation="ngModel"
+              [ngClass]="{'is-invalid' : (designation.invalid && (designation.dirty || designation.touched))}" required>
+            <div style="margin-top:-30px" class="help-block"
+              *ngIf="designation.invalid && (designation.dirty || designation.touched || emp.submitted) ">
+              <div style="color: red; font-size: 12px" class="help-block" *ngIf="designation.errors.required"
+                class="form-controll-feedback">
+                Designation Required
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+
+            </div>
+            <div class="col" style="margin-left: 10%;">
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="">
+        <div class="row justify-content-between">
+          <div class="col-md-6">
+            <form class="form-inline float-right">
+              <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Employee list</label>
+              <div class="ml-2">
+                <span class="badge badge-dark">{{employeeList?.length}} </span>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <table class="table table-striped table-sm row-border hover" datatable [dtOptions]="dtOptions">
+          <thead>
+          <tr>
+            <th>
+              Employee name
+            </th>
+            <th>
+              Employee Id
+            </th>
+            <th>
+              Mobile No
+            </th>
+            <th>
+              Email
+            </th>
+            <th>
+              Designation
+            </th>
+            <th>
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employeeList" >
+            <td (click)="getEmployeeById(employee.id)">{{employee.first_name}}</td>
+            <td (click)="getEmployeeById(employee.id)">{{employee.employeeId}}</td>
+            <td (click)="getEmployeeById(employee.id)">{{employee.mobile_no}}</td>
+            <td (click)="getEmployeeById(employee.id)">{{employee.email}}</td>
+            <td (click)="getEmployeeById(employee.id)">{{employee.designation}}</td>
+            <td class="text-center width10">
+              <button data-toggle="modal" data-target="#AreYouSureInactivate" type="button" (click)="deleteEmployee(employee.id)" class="btn btn-raised remove-btn btn-sm btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>

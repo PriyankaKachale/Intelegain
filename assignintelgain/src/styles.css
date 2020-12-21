@@ -1,0 +1,409 @@
+
+
+/* You can add global styles to this file, and also import other style files */
+*{
+  margin:0;
+  padding:0;
+  font-family: roboto ;
+}
+
+body,html{
+  height: auto;
+  background-color: #f2f2f2;
+}
+
+.fa-form-icon{
+  width: 25px;
+  margin: 10px;
+  margin-left: 10px;
+  text-align: -webkit-center;
+  position: absolute;
+  color: #b6b6b6;
+}
+
+.headings h6{
+  font-size: 16px;
+}
+.form-lable{
+  font-size:0.8em;
+  color:#333333;
+}
+
+/* ======================FONT-SIZES AND COLORS=========================== */
+.smallgrey{
+  font-size:12px;
+  color:#999999;
+}
+
+
+/* ======================FONT-SIZES AND COLORS=========================== */
+
+
+/* ======================TOGGLE SWITCH========================================== */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 18px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+}
+
+ input:checked + .slider {
+  background-image: linear-gradient(to bottom, #ffa543, #fb961e);
+} 
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #ffa543;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(18px);
+  -ms-transform: translateX(18px);
+  transform: translateX(18px);
+}
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+
+
+
+/* ======================ALL FORM CSS========================================== */
+
+
+.form-control{
+  -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  -o-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  border-bottom: 2px solid #f2f2f2;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  line-height: 2;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: transparent;
+  margin-bottom: 2rem;
+}
+
+.form-control::placeholder {
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #999999;
+}
+.form-control:focus {
+  color: #a0a0a0;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: none !important;
+}
+
+.has-icon .form-control {
+  padding-left: 3rem;
+}
+
+.has-icon .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+.svgicon {
+  width: 16px;
+  margin: 5px;
+  margin-left:10px;
+  text-align: -webkit-center;
+  position: absolute;
+}
+
+.form-control-sm{
+  margin-top:1rem;
+  color:#999999;
+  margin-bottom: 1rem;
+  width:100%;
+  border:1px solid #999999 !important;
+  font-size: .8rem !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator::after {
+
+  content: '';
+  display: block;
+  background: url(/*yourURLHere*/) no-repeat;
+  background-size: 10%;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  transform: translateX(-2%);
+
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: transparent;
+  background: none;
+  z-index: 1;
+}
+
+
+input[type="date"]:before {
+  color: transparent;
+  background: none;
+  display: block;
+  font-family: 'FontAwesome';
+  content: '\f073';
+  /* This is the calendar icon in FontAwesome */
+  width: 15px;
+  height: 20px;
+  position: absolute;
+  right: 12px;
+  color: #999;
+}
+/* ======================ALL FORM CSS========================================== */
+
+
+/* ==========================BUTTONS CSS======================================= */
+
+.btn-yellow{
+  border-radius: 0;
+  background: #ff9f38;
+  color: #ffffff;
+  font-size: medium;
+  padding: 0.8rem;
+  margin-top: 2rem;
+  box-shadow: 1px 13px 30px -13px #e88a24;
+}
+.fp{
+  margin-top:2rem;
+}
+.fp p, .signup{
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #242568 !important;
+}
+.fp span{
+  font-family: Roboto;
+  font-size: 12px;
+  color: #b6b6b6;
+}
+
+/* ==========================BUTTONS CSS======================================= */
+
+
+
+
+/* ==========================MEDIA QUERY FOR MOBILE======================================= */
+@media only screen and (max-width: 600px) {
+
+  .loginbg, p, h1{
+    background: none !important;
+  }
+  .loginbg p, h1{
+    display: none;
+  }
+}
+/* ==========================MEDIA QUERY FOR MOBILE======================================= */
+
+.white-bg{
+  background: #fff;
+  border-radius: 0.265rem;
+  -webkit-box-shadow: 0 .125rem 2.5rem 0 rgba(0,0,0,.08)!important;
+  -moz-box-shadow: 0 .125rem 2.5rem 0 rgba(0,0,0,.08)!important;
+  box-shadow: 0 .125rem 2.5rem 0 rgba(0,0,0,.08)!important;
+}
+.min-height-500{
+  min-height: 500px;
+}
+
+
+
+/* ===================================FILE UPLOAD DESIGN============================   */
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-wrap {
+  text-align: center;
+  padding:1.5rem;
+  margin-top: 20px;
+  border: 2px dashed rgb(207, 207, 207);
+  position: relative;
+}
+
+.image-upload-wrap:hover {
+  background-color: rgb(236, 236, 236);
+  border: 2px dashed #ffffff;
+}
+
+.drag-text h6 {
+  color: #999999;
+  font-size:12px;
+}
+.org{
+  color:#fb961e;
+}
+
+.grey{
+  color:#999999;
+}
+/* ===================================FILE UPLOAD DESIGN============================   */
+
+/* ===========================POPUP============================== */
+.modal{
+  padding-top:10%;
+  background-color: #727de27a;
+}
+.modal-header {
+  border-bottom: 1px solid #3074b900 !important;
+}
+
+.modalpadding{
+  padding:2rem;
+}
+
+.modal-body .smallgrey{
+  line-height: 1;
+  margin-bottom: 0.5rem !important;
+}
+.mt-3rem{
+  margin-top:3rem;
+}
+
+.btn-outline-secondary{
+  border-radius: 2px !important;
+}
+.visipic-inpoup{
+  position: absolute;
+  text-align: -webkit-center;
+  width: 93%;
+}
+.grey-footer{
+  background-color: #ebebeb;
+  padding:3rem;
+  padding-top:1rem;
+  padding-bottom:1rem;
+}
+
+.grey-footer .smallgrey{
+  margin-bottom: 0.5rem;
+}
+.visipic-inpoup img{
+  position: relative;
+  margin-top: -60px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0px 0px 17px 0px #80808080;
+}
+
+/* ===========================POPUP============================== */
+
+
+/* ==============================FA ICONS cursor====================== */
+.fa-eye, .fa-trash-o, .fa-pencil{
+  cursor: pointer;
+}
+/* ==============================FA ICONS cursor====================== */
+
+/* ===========================DROP DOWN TOP ARROW=================== */
+.dropdown-menu-arrow {
+  top: -25px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  position: relative;
+}
+.dropdown-menu-arrow:before,
+.dropdown-menu-arrow:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 7px 8px;
+  border-style: solid;
+  border-color: transparent;
+  z-index: 1001;
+}
+.dropdown-menu-arrow:after {
+  bottom: -18px;
+  right: -8px;
+  border-bottom-color: #28304c;
+}
+.dropdown-menu-arrow:before {
+  bottom: -17px;
+  right: -8px;
+  border-bottom-color: rgba(0,0,0,.15);
+}
+/* ===========================DROP DOWN TOP ARROW=================== */
+.overlay-container { 
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+} 

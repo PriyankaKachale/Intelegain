@@ -1,0 +1,105 @@
+<h2 style="margin-left: 45%;margin-top: 5%;"><b>Register</b></h2>
+<form style="margin-left: 35%;" name="signupForm" (ngSubmit)="signupForm.form.valid && signUpUser(signupForm)"
+  #signupForm="ngForm" novalidate>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <label for="firstName">Name</label>
+      <input type="text" class="form-control" placeholder="Your Name" [(ngModel)]="signup.first_name"
+        #first_name="ngModel" name="first_name"
+        [ngClass]="{'is-invalid' : (first_name.invalid && (first_name.dirty || first_name.touched))}" required>
+
+      <div style="margin-top:-30px" class="help-block"
+        *ngIf="first_name.invalid && (first_name.dirty || first_name.touched || signupForm.submitted)">
+        <div style="color: red; font-size: 12px" class="help-block" *ngIf="first_name.errors.required"
+          class="form-controll-feedback">
+          Name Required
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <label for="lastName">Email</label>
+      <input type="text" class="form-control" placeholder="Your Mail Id" name="email" [(ngModel)]="signup.email"
+        #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+        [ngClass]="{'is-invalid' : (email.invalid && (email.dirty || email.touched))}" required>
+
+      <div style="margin-top:-30px" class="help-block"
+        *ngIf="email.invalid && (email.dirty || email.touched || signupForm.submitted)">
+        <div style="color: red; font-size: 12px" class="help-block" *ngIf="email.errors.required"
+          class="form-controll-feedback">
+          Email Required
+        </div>
+        <div style="color: red; font-size: 12px" class="help-block" *ngIf="email.errors?.pattern" class="help-block">
+          Invalid Email Address</div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <label for="password">Mobile Number</label>
+      <input type="text" class="form-control" placeholder="Your Mobile Number" name="mobile" [(ngModel)]="signup.mobile"
+        #mobile="ngModel" minlength="10" maxlength="10" pattern="^(\(?\+?[0-9]*\)?)?[0-9_\(\)]*$"
+        [ngClass]="{'is-invalid' : (mobile.invalid && (mobile.dirty || mobile.touched))}" required>
+      <div style="margin-top:-30px" class="help-block"
+        *ngIf="mobile.invalid && (mobile.dirty || mobile.touched || signupForm.submitted)">
+        <div style="color: red; font-size: 12px" class="help-block" *ngIf="mobile.errors.required"
+          class="form-controll-feedback">
+          Mobile Number Required
+        </div>
+        <div style="color: red; font-size: 12px" class="help-block"
+          *ngIf="mobile.errors.minlength||mobile.errors.maxlength" class="help-block">
+          Mobile No Must Be {{mobile.errors.minlength.requiredLength-mobile.value.length}} Characters Long.
+        </div>
+        <div style="color: red; font-size: 12px" class="help-block" *ngIf="mobile.errors?.pattern" class="help-block">
+          Invalid Mobile Number </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <label for="username">Designation</label>
+      <input type="text" class="form-control" placeholder="Your Designation" [(ngModel)]="signup.designation"
+        #designation="ngModel" name="designation"
+        [ngClass]="{'is-invalid' : (designation.invalid && (designation.dirty || designation.touched))}" required>
+
+      <div style="margin-top:-30px" class="help-block"
+        *ngIf="designation.invalid && (designation.dirty || designation.touched || signupForm.submitted)">
+        <div style="color: red; font-size: 12px" class="help-block" *ngIf="designation.errors.required"
+          class="form-controll-feedback">
+          Designation Required
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <label for="username">Role</label>
+      <select class="form-control" id="role" name="role" #role="ngModel"  placeholder="Select role" [(ngModel)]="signup.role" required>
+        <option value="" >Select role</option>
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+
+      </select>
+      <div  class="help-block" *ngIf="role.invalid && (role.dirty || role.touched || signupForm.submitted)">
+        <div  style="color: red; font-size: 12px" class="help-block"  *ngIf="role.errors.required" class="form-controll-feedback">
+          role Required
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <button [disabled]="loading"  type="submit" class="btn btn-primary">Register</button>
+
+      <a routerLink="/" class="btn btn-link">Cancel</a>
+    </div>
+  </div>
+</form>
