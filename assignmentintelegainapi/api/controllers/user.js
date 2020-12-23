@@ -5,7 +5,6 @@ const dbConnection = require('../database');
 var nodemailer = require('nodemailer');
 
 exports.user_signup = (req, res, next) => {
-    var mailobj = {};
     dbConnection.query("SELECT username FROM users WHERE email=?", [req.body.email], function (error, result, fields) {
         if (error) {
             throw error;
@@ -18,23 +17,24 @@ exports.user_signup = (req, res, next) => {
                     message: 'User aleredy Exists'
                 });
             } else {
-                var password = generator.generate({
-                    length: 10,
-                    numbers: true
-                });
-                console.log(password);
-                mailobj.password = password;
-                bcrypt.hash(password, 10, (err, hash) => {
+                // var password = generator.generate({
+                //     length: 10,
+                //     numbers: true
+                // });
+                
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
                     if (err) {
                         return res.status(500).json({
                             error: err
                         });
                     } else {
-                        req.body.password = hash;
-                        req.body.pass = password;
+                        password= hash,
+                        pass= req.body.password
+                        // req.body.pass = req.body.password;
+                        // req.body.password = hash;
                         req.body.creation_dt = new Date();
                         req.body.username = req.body.email;
-                            dbConnection.query("INSERT INTO users(first_name,email,mobile,designation,role,username,pass,password,creation_dt,isactive) VALUES (?,?,?,?,?,?,?,?,?,?);", [req.body.first_name,req.body.email,req.body.mobile,req.body.designation,req.body.role, req.body.username,req.body.pass,req.body.password,req.body.creation_dt,1], function (error1, result1, fields1) {
+                            dbConnection.query("INSERT INTO users(first_name,email,mobile,designation,role,username,pass,password,creation_dt,isactive) VALUES (?,?,?,?,?,?,?,?,?,?);", [req.body.first_name,req.body.email,req.body.mobile,req.body.designation,"admin", req.body.username,pass,password,req.body.creation_dt,1], function (error1, result1, fields1) {
                             if (error1) {
                                 throw error1;
                             } else {
@@ -52,7 +52,7 @@ exports.user_signup = (req, res, next) => {
                                     html: '<strong>Dear ' +req.body.first_name + ', </strong><br/><br/>' +
                                         'You Registration with Intelegain is Done Successfully. <br/>' +
                                         'your User Name is ' + req.body.email + ' and  <br/>' +
-                                        'your password  is ' + req.body.pass + ' <br/>' +
+                                        'your password  is ' + req.body.password + ' <br/>' +
                                         'Thank You......'
                                 };
                                 transporter.sendMail(mailOptions, function (error, info) {

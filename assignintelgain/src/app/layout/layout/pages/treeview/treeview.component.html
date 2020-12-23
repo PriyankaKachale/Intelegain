@@ -5,40 +5,37 @@
 
         <div class="tree" style="overflow-x: auto;min-height: 450px;">
           <h4>Role wise logins name</h4>
-              <ul>
-                <li >    
-                  <ul>
-                    <li >
-                      <i class="fa fa-plus-circle" aria-hidden="true" (click)="getAdminData();"></i>
-                      <span class="steppericon" (click)="getAdminData();"><b> Admin </b></span>
-                    </li>
-                    <ul  *ngFor=" let userdata of userList" >
-                    <li *ngIf="userdata.role=='admin'" >   
-                      <span class="steppericon">{{userdata.first_name}}</span>
-                    </li>
-                    </ul>
-                  </ul>
-                </li>
-                <li >
-                  <i class="fa fa-plus-circle"  aria-hidden="true" (click)="getUserData();"></i>
-                  <span class="steppericon" (click)="getUserData();"><b> User</b></span>     
-                </li>
-                <ul  *ngFor=" let userdata of userList" >
-                  <li *ngIf="userdata.role=='user'" >   
-                    <span class="steppericon">{{userdata.first_name}}</span>
-                  </li>
-                  </ul>
 
-              </ul>  
+
+          <li>
+            <i class="fa fa-plus-circle" aria-hidden="true" (click)="getAdminData();"></i>
+            <span class="steppericon" (click)="getAdminData();"><b> Admin </b></span>
+          </li>
+          <ul *ngFor=" let userdata of userList">
+            <li *ngIf="userdata.role=='admin'">
+              <span class="steppericon">{{userdata.first_name}}</span>
+            </li>
+          </ul>
+
+          <li>
+            <i class="fa fa-plus-circle" aria-hidden="true" (click)="getUserData();"></i>
+            <span class="steppericon" (click)="getUserData();"><b> User</b></span>
+          </li>
+          <ul *ngFor=" let userdata of userList">
+            <li *ngIf="userdata.role=='user'">
+              <span class="steppericon">{{userdata.first_name}}</span>
+            </li>
+          </ul>
+
+
         </div>
 
       </div>
 
 
-      
 
 
-    </div></div></div>
 
-
-    
+    </div>
+  </div>
+</div>

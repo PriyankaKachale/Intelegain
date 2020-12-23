@@ -14,13 +14,11 @@ import { DataTablesModule } from 'angular-datatables';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
-  
+    RegistrationComponent, 
   ],
   imports: [
     BrowserModule,

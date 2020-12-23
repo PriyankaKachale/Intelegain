@@ -1,0 +1,47 @@
+<div class="col-md-12">
+  <div  class="col-md-8">
+    <table class="table table-bordered" datatable [dtOptions]="dtOptions">
+      <thead  class="table-dark">
+        <tr>
+          <th  class="text-center">
+            Employee name
+          </th>
+          <th  class="text-center">
+            Employee Id
+          </th>
+          <th  class="text-center">
+            Mobile No
+          </th>
+          <th  class="text-center">
+            Email
+          </th>
+          <th  class="text-center">
+            Designation
+          </th>
+          <th  class="text-center">
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employeeList">
+          <td class="text-center" (click)="getEmployeeById(employee.id)">{{employee.first_name}}</td>
+          <td class="text-center" (click)="getEmployeeById(employee.id)">{{employee.employeeId}}</td>
+          <td class="text-center" (click)="getEmployeeById(employee.id)">{{employee.mobile_no}}</td>
+          <td class="text-center" (click)="getEmployeeById(employee.id)">{{employee.email}}</td>
+          <td class="text-center" (click)="getEmployeeById(employee.id)">{{employee.designation}}</td>
+          <td class="text-center">
+            <i class="fa fa-eye" [routerLink]="['../viewemp']" (click)="getEmpDetail(employee.id)" title="View details"
+              aria-hidden="true"></i>&nbsp;&nbsp;
+
+            <i *ngIf="role =='admin'" class="fa fa-pencil" [routerLink]="['../employee']" (click)="getEmpDetail(employee.id)" title="Edit details"
+              aria-hidden="true"></i>&nbsp;&nbsp;
+            <i *ngIf="role =='admin'" class="fa fa-trash" aria-hidden="true" (click)="deleteEmployee(employee.id)"></i>
+
+            <!-- <button data-toggle="modal" data-target="#AreYouSureInactivate" type="button" (click)="deleteEmployee(employee.id)" class="btn btn-raised remove-btn btn-sm btn-danger">Delete</button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+ 
+  </div>

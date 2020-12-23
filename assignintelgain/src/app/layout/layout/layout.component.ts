@@ -33,4 +33,7 @@ export class LayoutComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
+  changeActive1(emp){
+    sessionStorage.removeItem('empedit')
+  }
 }

@@ -5,4 +5,5 @@ export class Signup {
   address: string;
   designation: string;
   role: string;
+  password:string;
 }

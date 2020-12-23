@@ -1,19 +1,21 @@
-<div class="p-4">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="white-bg height100 p-3" style="margin-left: 4%;">
+
+ 
+    <div style="margin-left: 15%;" class="col-md-8">
+      <div class="row justify-content-center" style="margin-left: 20%;">
         <div class="row">
-            <div class="headings pl-4 mt-3 mb-3">
-              <h6 style="margin-left: 5%;">Add Employee</h6>
-            </div>
+          <div class="headings">
+            <h4 *ngIf="addbtn==true" style="margin-left: 15%;">Update Employee</h4>
+            <h4 *ngIf="addbtn==false" style="margin-left: 15%;">Add Employee</h4>
+          </div>
         </div>
-        <form name="form" #emp="ngForm" novalidate (ngSubmit)="emp.form.valid && addEmployee(emp)">
-          <div class="form-group has-icon">
-            <i class="fa fa-user fa-form-icon" aria-hidden="true"></i>
+        <form id="empform" name="form" #emp="ngForm" novalidate (ngSubmit)="emp.form.valid && addEmployee(emp)">
+          <div class="form-group">
+            <label for="password">Name</label>
+            <!-- <i class="fa fa-user fa-form-icon" aria-hidden="true"></i> -->
             <input type="text" class="form-control" name="first_name" [(ngModel)]="employee.first_name"
               placeholder=" Employee Name" #first_name="ngModel"
               [ngClass]="{'is-invalid' : (first_name.invalid && (first_name.dirty || first_name.touched))}" required>
-            <div style="margin-top:-30px" class="help-block"
+            <div  class="help-block"
               *ngIf="first_name.invalid && (first_name.dirty || first_name.touched || emp.submitted)">
               <div style="color: red; font-size: 12px" class="help-block" *ngIf="first_name.errors.required"
                 class="form-controll-feedback">
@@ -22,36 +24,40 @@
             </div>
           </div>
 
-          <div class="form-group has-icon">
-            <i class="fa fa-mobile fa-form-icon" aria-hidden="true"></i>
-              <input type="text" class="form-control" placeholder="Your Mobile Number" name="mobile" [(ngModel)]="employee.mobile_no"
-                #mobile="ngModel" minlength="10" maxlength="10" pattern="^(\(?\+?[0-9]*\)?)?[0-9_\(\)]*$"
-                [ngClass]="{'is-invalid' : (mobile.invalid && (mobile.dirty || mobile.touched))}" required>
-              <div style="margin-top:-30px" class="help-block"
-                *ngIf="mobile.invalid && (mobile.dirty || mobile.touched || emp.submitted)">
-                <div style="color: red; font-size: 12px" class="help-block" *ngIf="mobile.errors.required"
-                  class="form-controll-feedback">
-                  Mobile Number Required
-                </div>
-                <div style="color: red; font-size: 12px" class="help-block"
-                  *ngIf="mobile.errors.minlength||mobile.errors.maxlength" class="help-block">
-                  Mobile No Must Be {{mobile.errors.minlength.requiredLength-mobile.value.length}} Characters Long.
-                </div>
-                <div style="color: red; font-size: 12px" class="help-block" *ngIf="mobile.errors?.pattern" class="help-block">
-                  Invalid Mobile Number </div>
+
+          <div class="form-group ">
+            <label for="password">Mobile Number</label>
+            <!-- <i class="fa fa-mobile fa-form-icon" aria-hidden="true"></i> -->
+            <input type="text" class="form-control" placeholder="Your Mobile Number" name="mobile"
+              [(ngModel)]="employee.mobile_no" #mobile="ngModel" minlength="10" maxlength="10"
+              pattern="^(\(?\+?[0-9]*\)?)?[0-9_\(\)]*$"
+              [ngClass]="{'is-invalid' : (mobile.invalid && (mobile.dirty || mobile.touched))}" required>
+            <div  class="help-block"
+              *ngIf="mobile.invalid && (mobile.dirty || mobile.touched || emp.submitted)">
+              <div style="color: red; font-size: 12px" class="help-block" *ngIf="mobile.errors.required"
+                class="form-controll-feedback">
+                Mobile Number Required
               </div>
+              <div style="color: red; font-size: 12px" class="help-block"
+                *ngIf="mobile.errors.minlength||mobile.errors.maxlength" class="help-block">
+                Mobile No Must Be {{mobile.errors.minlength.requiredLength-mobile.value.length}} Characters Long.
+              </div>
+              <div style="color: red; font-size: 12px" class="help-block" *ngIf="mobile.errors?.pattern"
+                class="help-block">
+                Invalid Mobile Number </div>
             </div>
+          </div>
 
-         
 
-          <div class="form-group has-icon">
 
-            <i class="fa fa-envelope fa-form-icon" aria-hidden="true"></i>
+          <div class="form-group">
+            <label for="password">Email</label>
+            <!-- <i class="fa fa-envelope fa-form-icon" aria-hidden="true"></i> -->
 
             <input type="text" class="form-control" name="email" [(ngModel)]="employee.email" placeholder=" emil id"
               #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
               [ngClass]="{'is-invalid' : (email.invalid && (email.dirty || email.touched))}" required>
-            <div style="margin-top:-30px" class="help-block"
+            <div  class="help-block"
               *ngIf="email.invalid && (email.dirty || email.touched || emp.submitted)">
               <div style="color: red; font-size: 12px" class="help-block" *ngIf="email.errors.required"
                 class="form-controll-feedback">
@@ -62,12 +68,13 @@
             </div>
           </div>
 
-          <div class="form-group has-icon">
-            <i class="fa fa-user fa-form-icon" aria-hidden="true"></i>
+          <div class="form-group">
+            <label for="password">Employee Id</label>
+            <!-- <i class="fa fa-user fa-form-icon" aria-hidden="true"></i> -->
             <input type="text" class="form-control" name="employeeId" [(ngModel)]="employee.employeeId"
               placeholder=" Employee Id" #employeeId="ngModel"
               [ngClass]="{'is-invalid' : (employeeId.invalid && (employeeId.dirty || employeeId.touched))}" required>
-            <div style="margin-top:-30px" class="help-block"
+            <div  class="help-block"
               *ngIf="employeeId.invalid && (employeeId.dirty || employeeId.touched || emp.submitted)">
               <div style="color: red; font-size: 12px" class="help-block" *ngIf="employeeId.errors.required"
                 class="form-controll-feedback">
@@ -76,14 +83,14 @@
             </div>
           </div>
 
-          <div class="form-group has-icon">
-
-            <i class="fa fa-briefcase fa-form-icon" aria-hidden="true"></i>
+          <div class="form-group">
+            <label for="password">Designation</label>
+            <!-- <i class="fa fa-briefcase fa-form-icon" aria-hidden="true"></i> -->
 
             <input type="text" class="form-control" name="designation" [(ngModel)]="employee.designation"
               placeholder=" Designation" #designation="ngModel"
               [ngClass]="{'is-invalid' : (designation.invalid && (designation.dirty || designation.touched))}" required>
-            <div style="margin-top:-30px" class="help-block"
+            <div  class="help-block"
               *ngIf="designation.invalid && (designation.dirty || designation.touched || emp.submitted) ">
               <div style="color: red; font-size: 12px" class="help-block" *ngIf="designation.errors.required"
                 class="form-controll-feedback">
@@ -91,21 +98,49 @@
               </div>
             </div>
           </div>
-          <div class="form-row">
-            <div class="col">
-
+         
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select class="form-control" id="role" name="role" #role="ngModel" placeholder="Select role"
+                [(ngModel)]="employee.role" required>
+                <option value="">Select role</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+                <option value="employee">Employee</option>
+              </select>
+              <div class="help-block" *ngIf="role.invalid && (role.dirty || role.touched || emp.submitted)">
+                <div style="color: red; font-size: 12px" class="help-block" *ngIf="role.errors.required"
+                  class="form-controll-feedback">
+                  Role Required
+                </div>
+              </div>
             </div>
-            <div class="col" style="margin-left: 10%;">
+            <div class="form-group">
+              <label for="username">Password</label>
+              <input type="password" class="form-control" placeholder="Enter password" [(ngModel)]="employee.password"
+                #password="ngModel" name="password"
+                [ngClass]="{'is-invalid' : (password.invalid && (password.dirty || password.touched))}" required>
+        
+              <div class="help-block"
+                *ngIf="password.invalid && (password.dirty || password.touched || emp.submitted)">
+                <div style="color: red; font-size: 12px" class="help-block" *ngIf="password.errors.required"
+                  class="form-controll-feedback">
+                  Password Required
+                </div>
+              </div>
+            </div>
+            <div *ngIf="addbtn==false" class="form-group">
               <button type="submit" class="btn btn-primary">Add</button>
             </div>
-          </div>
-
+            <div *ngIf="addbtn==true" class="form-group">
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
         </form>
 
       </div>
     </div>
 
-    <div class="col-md-8">
+    <!-- <div class="col-md-8">
       <div class="">
         <div class="row justify-content-between">
           <div class="col-md-6">
@@ -150,12 +185,16 @@
             <td (click)="getEmployeeById(employee.id)">{{employee.email}}</td>
             <td (click)="getEmployeeById(employee.id)">{{employee.designation}}</td>
             <td class="text-center width10">
-              <button data-toggle="modal" data-target="#AreYouSureInactivate" type="button" (click)="deleteEmployee(employee.id)" class="btn btn-raised remove-btn btn-sm btn-danger">Delete</button>
+              <i class="fa fa-eye" [routerLink]="['../emppimsview']" (click)="getEmpDetail(i)"
+              title="View details" aria-hidden="true"></i>
+              <i class="fa fa-pencil" [routerLink]="['../pimshr']" (click)="setEmp(i,'emp')" title="Edit details"
+              aria-hidden="true"></i>
+              <i class="fa fa-trash" aria-hidden="true" (click)="deleteEmployee(employee.id)"></i>
+
             </td>
           </tr>
         </tbody>
       </table>
       </div>
-    </div>
-  </div>
-</div>
+    </div> -->
+ 

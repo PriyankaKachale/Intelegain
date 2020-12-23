@@ -159,32 +159,6 @@
   /* ==========================TOPNAVBAR======================== =*/
   
   
-  /* ==========================NOTIFICATION BELL ======================== =*/
-  .bell-dropdown::after{
-    display:none;
-  }
-  
-  .bell-dropdown::before{
-    display:none;
-  }
-  
-  .fa-bell-o{
-    cursor: pointer;
-  }
-  .dropdown-menu-bell{
-    min-width: 380px !important;
-    left: -312px;
-  }
-  
-  .dropdown-menu-arrow-bell{
-    left: 86% !important;
-  }
-  
-  .dropdown-menu-bell p{
-    color:white;
-  }
-  
-  /* ==========================NOTIFICATION BELL ======================== =*/
   
   
   td:first-child {
@@ -207,24 +181,7 @@
     margin-top:1.5rem;
   }
   
-  .visitorslist tr{
-    font-size:12px;
-    border-spacing: 10;
-    border:none !important;
-    background: #fff;
-    border-radius: 0.2rem;
-    margin-bottom: 10px;
-    box-shadow: 0 .125rem 2.5rem 0 rgba(0,0,0,.08)!important;
-  }
-  .visitorslist td{
-    border:none !important;
-    padding: .75rem;
-    vertical-align: middle !important;
-  }
-  .visitorslist{
-    border-collapse: separate;
-    border-spacing: 0 15px;
-  }
+  
   
   .image-cover {
     width: 30px;

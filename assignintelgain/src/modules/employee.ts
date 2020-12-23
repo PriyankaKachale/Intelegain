@@ -6,4 +6,7 @@ export class Employee {
   public designation: string;
   public added_by: string;
   public employeeId: any;
+  public role:string;
+  public password:string;
+  public user_id:any;
 }
